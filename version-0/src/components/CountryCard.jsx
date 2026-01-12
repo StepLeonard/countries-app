@@ -1,4 +1,5 @@
-// component that gets one country passed in a prop.
+// We import React so we can use JSX
+import React from "react"; // component that gets one country passed in a prop.
 function CountryCard({ country }) {
   // grab the name of the country if it doesnt exist use "unknown country instead"
   const name = country?.name?.common || "Unknown country";

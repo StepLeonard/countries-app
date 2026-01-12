@@ -54,10 +54,7 @@ body {
   max-width: 1200px;
   margin: 0 auto;
 }
-.card-link {
-  text-decoration: none;
-  color: inherit;
-}
+
 
 /* mobile grid */
 .grid {

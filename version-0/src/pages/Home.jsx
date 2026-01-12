@@ -1,5 +1,5 @@
 import React from "react";
-import CountryCard from "../components/CountryCard.jsx";
+import CountryCard from "../components/CountryCard";
 // This component shows the Home page
 // It receives a list of countries as a prop
 function Home({ countriesData }) {
