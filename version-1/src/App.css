@@ -55,7 +55,6 @@ body {
   margin: 0 auto;
 }
 
-
 /* mobile grid */
 .grid {
   display: grid;
@@ -107,4 +106,65 @@ body {
 .country-detail {
   max-width: 800px;
   margin: 2rem auto;
+}
+/* This styles the whole Saved Countries section */
+.saved {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+/* This styles the page title */
+.saved h1 {
+  text-align: center; /* puts the title in the middle */
+  margin-bottom: 20px; /* space under the title */
+}
+
+/* This styles the form */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* This styles each label */
+.form label {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+}
+
+/* This styles all inputs and the textarea */
+.form input,
+.form textarea {
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+/* This makes the textarea */
+.form textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+/* Purple submit button */
+.button {
+  width: fit-content;
+  background-color: #7b77d1;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0.8rem;
+}
+
+/* Hover effect */
+.button:hover {
+  background-color: #6a66c5;
 }
