@@ -1,5 +1,4 @@
-// We import React so we can use JSX
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 // We import routing tools so we can move between pages
 import { Routes, Route, Link } from "react-router-dom";
@@ -9,18 +8,45 @@ import Home from "./pages/Home.jsx";
 import SavedCountries from "./pages/SavedCountries.jsx";
 import CountryDetail from "./pages/CountryDetail.jsx";
 
-// We import the local country data
+// ✅ We import local country data as a BACKUP
 import localData from "../localData.js";
 
 // This is the main App component
-// It controls the header and page navigation
+
 function App() {
+  // This is where we will store the countries
+  const [countries, setCountries] = useState([]);
+
+  // This function goes to the API and gets the countries data
+  async function fetchCountries() {
+    try {
+      const url =
+        "https://restcountries.com/v3.1/all?fields=name,flags,population,capital,region,cca3,borders";
+
+      // response = what we get back from the url
+      const response = await fetch(url);
+
+      const data = await response.json();
+
+      setCountries(data);
+    } catch (error) {
+      // If the API fails, use local data instead
+      console.log("API failed, using local data instead");
+      setCountries(localData);
+    }
+  }
+
+  // run when page loads
+  useEffect(() => {
+    fetchCountries();
+  }, []);
+
   return (
     // This wraps the entire app
     <div className="app">
-      {/* Header section at the top of the page */}
+      {/* Header */}
       <header className="app-header">
-        {/* Navigation bar */}
+        {/* Nav bar */}
         <nav className="nav">
           {/* Link to the Home page */}
           <Link to="/" className="where-link">
@@ -34,20 +60,25 @@ function App() {
         </nav>
       </header>
 
-      {/* This is where different pages will show */}
+      {/* This is where pages will show */}
       <main className="app-main">
-        {/* Routes decide which page shows based on the URL */}
+        {/* Routes decide which page shows  */}
         <Routes>
-          {/* Home page
-              We pass the country data into Home */}
-          <Route path="/" element={<Home countriesData={localData} />} />
+          {/*  We pass the countries data into Home */}
+          <Route path="/" element={<Home countriesData={countries} />} />
 
-          {/* Saved Countries page */}
-          <Route path="/saved" element={<SavedCountries />} />
+          {/* We pass countries here too */}
+          <Route
+            path="/saved"
+            element={<SavedCountries countriesData={countries} />}
+          />
 
           {/* Country Detail page
               The :code comes from the URL */}
-          <Route path="/country/:code" element={<CountryDetail />} />
+          <Route
+            path="/country/:code"
+            element={<CountryDetail countriesData={countries} />}
+          />
         </Routes>
       </main>
     </div>

@@ -7,6 +7,7 @@ function CountryCard({ country }) {
   const code = country.cca3;
   // showback to the user
   return (
+    
     <article className="country-card">
       <img
         //   shows coutry flag
@@ -32,6 +33,7 @@ function CountryCard({ country }) {
         <p className="pop_cap_reg">Region: {country.region || "N/A"}</p>
       </div>
     </article>
+    
   );
 }
 
