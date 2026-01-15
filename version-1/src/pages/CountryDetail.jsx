@@ -1,9 +1,12 @@
 import React from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 export default function CountryDetail({ countriesData }) {
   // get the countryName from the URL
   const countryName = useParams().countryName;
+
+  // allows us to go back to the previous page
+  const navigate = useNavigate();
 
   console.log(countryName);
 
@@ -15,10 +18,10 @@ export default function CountryDetail({ countriesData }) {
   return (
     // This section holds the country detail page
     <section className="detailpage">
-      {/* Back button */}
-      <Link to="/" className="backbtn">
+      {/* Back button navigates to page before */}
+      <button className="backbtn" onClick={() => navigate(-1)}>
         ← Back
-      </Link>
+      </button>
 
       {/* This holds the flag and the text */}
       <div className="detailbox">
