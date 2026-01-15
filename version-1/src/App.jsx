@@ -12,13 +12,12 @@ import CountryDetail from "./pages/CountryDetail.jsx";
 import localData from "../localData.js";
 
 // This is the main App component
-
 function App() {
   // This is where we will store the countries
   const [countries, setCountries] = useState([]);
 
   // This function goes to the API and gets the countries data
-  async function fetchCountries() {
+  async function getCountries() {
     try {
       const url =
         "https://restcountries.com/v3.1/all?fields=name,flags,population,capital,region,cca3,borders";
@@ -38,7 +37,7 @@ function App() {
 
   // run when page loads
   useEffect(() => {
-    fetchCountries();
+    getCountries();
   }, []);
 
   return (
@@ -62,9 +61,9 @@ function App() {
 
       {/* This is where pages will show */}
       <main className="app-main">
-        {/* Routes decide which page shows  */}
+        {/* Routes decide which page shows */}
         <Routes>
-          {/*  We pass the countries data into Home */}
+          {/* We pass the countries data into Home */}
           <Route path="/" element={<Home countriesData={countries} />} />
 
           {/* We pass countries here too */}
@@ -74,9 +73,9 @@ function App() {
           />
 
           {/* Country Detail page
-              The :code comes from the URL */}
+              The :countryName comes from the URL */}
           <Route
-            path="/country/:code"
+            path="/country-detail/:countryName"
             element={<CountryDetail countriesData={countries} />}
           />
         </Routes>
