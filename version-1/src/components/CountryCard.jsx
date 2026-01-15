@@ -1,4 +1,3 @@
-// We import React so we can use JSX
 import React from "react";
 import { Link } from "react-router-dom";
 

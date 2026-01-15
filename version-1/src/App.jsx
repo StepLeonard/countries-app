@@ -31,8 +31,8 @@ function App() {
 
       setCountries(data);
     } catch (error) {
-      // If the API fails, use local data instead
-      console.log("API failed, using local data instead");
+      // local data being used
+      console.log("local data being used");
       setCountries(localData);
     }
   }
