@@ -1,7 +1,7 @@
 import React from "react";
 import CountryCard from "../components/CountryCard";
 // This component shows the Home page
-// It receives a list of countries as a prop
+// It receives a prop called countries data
 function Home({ countriesData }) {
   // This is what shows on the screen
   return (
@@ -11,10 +11,7 @@ function Home({ countriesData }) {
       <div className="grid">
         {/* We loop through the countriesData. For each country, we show the card */}
         {countriesData.map((country) => (
-          <CountryCard
-            key={country.cca3 || country.name?.common}
-            country={country}
-          />
+          <CountryCard key={country.name.common} country={country} />
         ))}
       </div>
     </section>

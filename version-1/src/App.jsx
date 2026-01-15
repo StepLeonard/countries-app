@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-// We import routing tools so we can move between pages
+// We import routing  so we can move between pages
 import { Routes, Route, Link } from "react-router-dom";
 
 // We import the pages for our app
@@ -8,7 +8,7 @@ import Home from "./pages/Home.jsx";
 import SavedCountries from "./pages/SavedCountries.jsx";
 import CountryDetail from "./pages/CountryDetail.jsx";
 
-// ✅ We import local country data as a BACKUP
+//  We import local country data as a BACKUP
 import localData from "../localData.js";
 
 // This is the main App component
@@ -16,15 +16,17 @@ function App() {
   // This is where we will store the countries
   const [countries, setCountries] = useState([]);
 
-  // This function goes to the API and gets the countries data
+  // This function goes to the API and gets the countries data. nname the function get countries
   async function getCountries() {
     try {
+      // we need name, flags, pop, capital and region. adjust the url for these
       const url =
         "https://restcountries.com/v3.1/all?fields=name,flags,population,capital,region,cca3,borders";
 
       // response = what we get back from the url
       const response = await fetch(url);
 
+      // make a variable for data
       const data = await response.json();
 
       setCountries(data);
@@ -37,6 +39,7 @@ function App() {
 
   // run when page loads
   useEffect(() => {
+    // call the api function
     getCountries();
   }, []);
 
