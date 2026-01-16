@@ -26,7 +26,10 @@ function CountryCard({ country }) {
           <h2 className="country-name">{name}</h2>
 
           {/* population */}
-          <p className="pop_cap_reg">Population: {country.population}</p>
+          {/* find the population and add tolocalestring to add commas */}
+          <p className="pop_cap_reg">
+            Population: {country.population.toLocaleString()}
+          </p>
 
           {/* capital */}
           <p className="pop_cap_reg">Capital: {country.capital}</p>

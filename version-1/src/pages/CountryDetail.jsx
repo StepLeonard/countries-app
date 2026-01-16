@@ -40,7 +40,8 @@ export default function CountryDetail({ countriesData }) {
           <button className="savebtn">Save</button>
 
           <p>
-            <strong>Population:</strong> {country.population}
+            {/* find population and use tolocalestring to use commas */}
+            <strong>Population:</strong> {country.population.toLocaleString()}
           </p>
 
           <p>
