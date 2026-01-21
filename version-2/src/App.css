@@ -1,0 +1,207 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  background-color: #f4f4f4;
+  color: #111517;
+}
+
+.app {
+  min-height: 100vh;
+}
+
+/* Header */
+.app-header {
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  padding: 1rem 2rem;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.where-link {
+  font-weight: 800;
+  text-decoration: none;
+  color: #111517;
+}
+
+.saved-link {
+  font-weight: 600;
+  text-decoration: none;
+  color: #111517;
+}
+
+.saved-link:hover,
+.where-link:hover {
+  opacity: 0.3;
+}
+
+.app-main {
+  padding: 2rem;
+}
+
+.home {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* mobile grid */
+.grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr;
+}
+
+/* Desktop */
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Country cards */
+.country-card {
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
+
+  cursor: pointer;
+}
+/* flag picture */
+
+.countryflag {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  display: block;
+}
+
+.cardInfo {
+  padding: 1.25rem 1.5rem 1.5rem;
+}
+
+.country-name {
+  margin: 0 0 1rem;
+  font-size: 1.1rem;
+}
+/* population, capital and region text */
+.pop_cap_reg {
+  margin: 0.5rem 0;
+  font-weight: 400;
+  font-size: 0.95rem;
+}
+
+.saved,
+.country-detail {
+  max-width: 800px;
+  margin: 2rem auto;
+}
+/* This styles the whole Saved Countries section */
+.saved {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+/* This styles the page title */
+.saved h1 {
+  text-align: center; /* puts the title in the middle */
+  margin-bottom: 20px; /* space under the title */
+}
+
+/* This styles the form */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* This styles each label */
+.form label {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+}
+
+/* This styles all inputs and the textarea */
+.form input,
+.form textarea {
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+/* This makes the textarea */
+.form textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+/* Purple submit button */
+.button {
+  width: fit-content;
+  background-color: #7b77d1;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0.8rem;
+}
+
+/* Hover effect */
+.button:hover {
+  background-color: #6a66c5;
+}
+/* Country Detail Page  */
+
+.backbtn {
+  display: inline-block;
+  margin-bottom: 2rem;
+  padding: 0.5rem 1rem;
+  background: white;
+  border: 1px solid #ccc;
+  text-decoration: none;
+  color: #111517;
+}
+
+.detailbox {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+}
+
+.bigflag {
+  width: 560px;
+  max-width: 100%;
+}
+
+.detailtext h1 {
+  margin-top: 0;
+}
+
+.savebtn {
+  margin-bottom: 1rem;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid #ccc;
+  background: white;
+  cursor: pointer;
+}
+a {
+  text-decoration: none;
+}
