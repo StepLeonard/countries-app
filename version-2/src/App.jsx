@@ -9,7 +9,7 @@ import SavedCountries from "./pages/SavedCountries.jsx";
 import CountryDetail from "./pages/CountryDetail.jsx";
 
 //  We import local country data as a BACKUP
-import localData from "../localData.js";
+import localData from "./localData.js";
 
 // This is the main App component
 function App() {

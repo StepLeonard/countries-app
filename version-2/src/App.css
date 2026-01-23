@@ -6,7 +6,11 @@
 
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
     sans-serif;
   background-color: #f4f4f4;
   color: #111517;
@@ -109,7 +113,7 @@ body {
 }
 /* This styles the whole Saved Countries section */
 .saved {
-  max-width: 500px;
+  max-width: 1200px;
   margin: 40px auto;
   padding: 20px;
   background-color: #f9f9f9;
@@ -127,6 +131,8 @@ body {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  max-width: 500px;
+  margin: 40px auto 0;
 }
 
 /* This styles each label */
@@ -204,4 +210,8 @@ body {
 }
 a {
   text-decoration: none;
+}
+.welcome {
+  text-align: center;
+  font-size: 40px;
 }
