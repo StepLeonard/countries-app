@@ -52,12 +52,12 @@ RESPONSE: ------ confirmation
 
 ❓ WHEN: ------ on submit (button)
 
-❓ WHERE: ------ SavedCountries.jsx
+❓ WHERE: ------ the function we write will be called in the handleSubmit
 
 ❓ HOW:
-Step 1: ------
-Step 2: ------
-Step 3: ------
+Step 1: ------ write a function for storing Form data call it storeUserData()
+Step 2: ------Put a post request in it
+Step 3: ------call the form data storing function from handleSubmit
 Add more steps as needed!
 
 ========================
@@ -103,23 +103,26 @@ Add more steps as needed!
 ========================
 
 ❓ WHAT...
-TYPE OF HTTP REQUEST (GET OR POST): ------
-API ENDPOINT: ------
+TYPE OF HTTP REQUEST (GET OR POST): ------POST
+API ENDPOINT: ------/save-one-country
 
-REQUEST BODY DATA TYPE (if applicable): ------
+REQUEST BODY DATA TYPE (if applicable): ------ OBJECT
 REQUEST BODY (if applicable): ------
+{
+"country_name": "Japan"
+}
 
-RESPONSE DATA TYPE: ------
-RESPONSE: ------
+RESPONSE DATA TYPE: ------ STRING
+RESPONSE: ------CONFIRMATION
 
-❓ WHEN: ------
+❓ WHEN: ------ When the user clicks the save button 
 
-❓ WHERE: ------
+❓ WHERE: ------ home page inside the button onClick handler
 
 ❓ HOW:
-Step 1: ------
-Step 2: ------
-Step 3: ------
+Step 1: ------ make a function called saveCountry()
+Step 2: ------ in the function unction send a post request
+Step 3: -----
 Add more steps as needed!
 
 ========================
@@ -127,23 +130,33 @@ Add more steps as needed!
 ========================
 
 ❓ WHAT...
-TYPE OF HTTP REQUEST (GET OR POST): ------
-API ENDPOINT: ------
+TYPE OF HTTP REQUEST (GET OR POST): ------GET
+API ENDPOINT: ------/get-all-saved-countries
 
-REQUEST BODY DATA TYPE (if applicable): ------
-REQUEST BODY (if applicable): ------
+REQUEST BODY DATA TYPE (if applicable): ------N/A
+REQUEST BODY (if applicable): ------N/A
 
-RESPONSE DATA TYPE: ------
-RESPONSE: ------
+RESPONSE DATA TYPE: ------array of objects
+RESPONSE: ------[
+{
+"saved_country_id": 1,
+"country_name": "Japan"
+},
+{
+"saved_country_id": 2,
+"country_name": "Brazil"
+}
+]
 
-❓ WHEN: ------
+❓ WHEN: ------on page load(avedCountries page)
 
-❓ WHERE: ------
+❓ WHERE: ------ SavedCountries
 
 ❓ HOW:
-Step 1: ------
-Step 2: ------
-Step 3: ------
+Step 1: ------make a fuction called getSavedCountries
+Step 2: ------fetch GET get all saved countries
+Step 3: ------use useEffect to call getSavedCountries
+Step 4:------ reder the saved countries
 Add more steps as needed!
 
 =================================
@@ -156,21 +169,31 @@ Add more steps as needed!
 NOTE: We combine storing & retrieving country counts data into one section because they always happen together. Each time we look up a country’s view count, we also need to increase it and save the new total.
 
 ❓ WHAT...
-TYPE OF HTTP REQUEST (GET OR POST): ------
-API ENDPOINT: ------
+TYPE OF HTTP REQUEST (GET OR POST): ------ POST
+API ENDPOINT: ------/update-one-country-count
 
-REQUEST BODY DATA TYPE (if applicable): ------
+REQUEST BODY DATA TYPE (if applicable): ------ JSON object
 REQUEST BODY (if applicable): ------
+{
+  "country_name": "Japan"
+}
 
-RESPONSE DATA TYPE: ------
+
+RESPONSE DATA TYPE: ------string
 RESPONSE: ------
+{
+  "country_name": "Japan",
+  "count": 12
+}
 
-❓ WHEN: ------
 
-❓ WHERE: ------
+❓ WHEN: ------On page load CountryDetail page
+
+❓ WHERE: ------CountryDetail page
 
 ❓ HOW:
-Step 1: ------
-Step 2: ------
-Step 3: ------
-Add more steps as needed!
+Step 1: ------ Get the country name from the country you clicked)
+Step 2: ------ Make an function called updateCountryCount() that sends a POST request to /update-one-country-count with coutry name
+Step 3: ------ Save the returned count 
+Step 4: ------ Use useEffect to call updateCountryCount() when the CountryDetail page loads
+Step 5: ------ Render the count in JSX 
