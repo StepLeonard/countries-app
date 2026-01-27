@@ -41,10 +41,10 @@ API ENDPOINT: ------/add-one-user
 REQUEST BODY DATA TYPE (if applicable): ------ JSON (object)
 REQUEST BODY (if applicable): ------
 {
-  "name": "Alice",
-  "country_name": "Germany",
-  "email": "alice@example.com",
-  "bio": "A little about Alice"
+  "name": fullname,
+  "country_name": country,
+  "email": email,
+  "bio": bio
 }
 
 RESPONSE DATA TYPE: ------ string
@@ -83,15 +83,17 @@ RESPONSE: ------
   }
 ]
 
-❓ WHEN: ------ on page load (SavedCountries)
+❓ WHEN: ------ on page load (SavedCountries) and after submitting form
 
-❓ WHERE: ------ SavedCountries page
+❓ WHERE: ------ SavedCountries page, inside getNewestUserData()
 
 ❓ HOW:
-Step 1: ------ fill out form and submit
-Step 2: ------ Make an async function called getNewestUserData that uses fetch to send a Get request to the endpoint /get-newest-user. then the function saves the data to a state variable called newestUserData.
-Step 3: ------ We will use useEffect to call getNewestUserData() on page load
-Step 4: ------ Render the newest users name to the screen in JSX
+Step 1: Write async function getNewestUserData().
+Step 2: Fetch GET /get-newest-user.
+Step 3: Convert response to JSON.
+Step 4: Grab the first object in the array (data[0]).
+Step 5: Save it into state with setNewestUser(data[0]).
+Step 6: Render “Welcome [name]!” in JSX if newestUser exists.
 Add more steps as needed!
 
 ===================================
@@ -102,28 +104,34 @@ Add more steps as needed!
 🔶 STORING SAVED COUNTRIES DATA
 ========================
 
-❓ WHAT...
-TYPE OF HTTP REQUEST (GET OR POST): ------POST
-API ENDPOINT: ------/save-one-country
 
-REQUEST BODY DATA TYPE (if applicable): ------ OBJECT
-REQUEST BODY (if applicable): ------
+
+
+❓ WHAT...
+TYPE OF HTTP REQUEST: POST
+API ENDPOINT: /save-one-country
+
+REQUEST BODY TYPE: JSON object
+REQUEST BODY:
 {
-"country_name": "Japan"
+  "country_name": "Japan"
 }
 
-RESPONSE DATA TYPE: ------ STRING
-RESPONSE: ------CONFIRMATION
+RESPONSE DATA TYPE: string
+RESPONSE: confirmation message
 
-❓ WHEN: ------ When the user clicks the save button 
+❓ WHEN:
+When the user clicks the Save button
 
-❓ WHERE: ------ home page inside the button onClick handler
+❓ WHERE:
+Home page, inside the save button onClick handler
 
 ❓ HOW:
-Step 1: ------ make a function called saveCountry()
-Step 2: ------ in the function unction send a post request
-Step 3: -----
-Add more steps as needed!
+Step 1: Write a function called saveCountry()
+Step 2: Send a POST request to /save-one-country
+Step 3: Pass the country name in the request body
+Step 4: Log the confirmation response
+
 
 ========================
 🔶 RETRIEVING SAVED COUNTRIES DATA
@@ -153,10 +161,11 @@ RESPONSE: ------[
 ❓ WHERE: ------ SavedCountries
 
 ❓ HOW:
-Step 1: ------make a fuction called getSavedCountries
-Step 2: ------fetch GET get all saved countries
-Step 3: ------use useEffect to call getSavedCountries
-Step 4:------ reder the saved countries
+Step 1: Write a function called getSavedCountries()
+Step 2: Send a GET request to /get-all-saved-countries
+Step 3: Save the response into state
+Step 4: Match saved countries with local data
+Step 5: Render the countries on the page
 Add more steps as needed!
 
 =================================
