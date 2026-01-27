@@ -10,17 +10,49 @@ function SavedCountries() {
   // This holds saved countries from the API
   const [savedCountries, setSavedCountries] = useState([]);
 
-  // This runs when the user clicks the Submit button
-  function handleSubmit(e) {
-    e.preventDefault(); // stops the page from refreshing
+  // function for storing Form data
+  async function storeUserData(data) {
+    try {
+      const response = await fetch(
+        "https://backend-answer-keys.onrender.com/add-one-user",
+        {
+          // HTTP request
+          method: "POST",
+          //  data being sent
+          headers: {
+            "Content-Type": "application/json",
+          },
+          // Use stringify method for data to be sent to backend
+          // use dot notation to get the data
+          body: JSON.stringify({
+            name: data.fullname,
+            country_name: data.country,
+            email: data.email,
+            bio: data.bio,
+          }),
+        },
+      );
 
-    // This lets us know the submit button worked
+      // If the response is text type, then use response.text()
+      // If the response is json data, use response.json()
+      const result = await response.text();
+      console.log("result", result);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  // This runs when the user clicks the Submit button
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    // checks if submit button worked
     console.log("Submit button worked");
 
     // This grabs the whole form
     const form = e.currentTarget;
 
-    // This grabs all the values typed into the form
+    // This grabs wht is typed into the form
     const data = new FormData(form);
 
     // This turns the form info into one object
@@ -29,7 +61,10 @@ function SavedCountries() {
     // This shows the whole object in the console
     console.log(formData);
 
-    // This clears the form after submitting
+    await storeUserData(formData);
+
+    await getNewestUserData();
+
     form.reset();
   }
 
@@ -106,6 +141,7 @@ function SavedCountries() {
           <CountryCard key={country.name.common} country={country} />
         ))}
       </div>
+
       {/* Show newest user from API */}
       <div class="welcome">
         {newestUser && <p>Welcome {newestUser.name}</p>}
