@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 export default function CountryDetail({ countriesData }) {
@@ -12,8 +12,39 @@ export default function CountryDetail({ countriesData }) {
 
   // find the country that matches the name from the URL
   const country = countriesData.find(
-    (item) => item.name.common === countryName
+    (item) => item.name.common === countryName,
   );
+
+  // ✅ This function saves ONE country to the backend
+  async function saveCountry(countryName) {
+    try {
+      const response = await fetch(
+        "https://backend-answer-keys.onrender.com/save-one-country",
+        {
+          // We are SENDING data, so we use POST
+          method: "POST",
+
+          // Tell the backend we are sending JSON data
+          headers: {
+            "Content-Type": "application/json",
+          },
+
+          // Send the country name in an object
+          body: JSON.stringify({
+            country_name: countryName,
+          }),
+        },
+      );
+
+      // The backend sends back a confirmation message (text)
+      const result = await response.text();
+
+      // This lets us see the confirmation in the console
+      console.log("Save country result:", result);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     // This section holds the country detail page
@@ -37,7 +68,12 @@ export default function CountryDetail({ countriesData }) {
           <h1>{country.name.common}</h1>
 
           {/* Save button */}
-          <button className="savebtn">Save</button>
+          <button
+            className="savebtn"
+            onClick={() => saveCountry(country.name.common)} // when clicked, save this country
+          >
+            Save
+          </button>
 
           <p>
             {/* find population and use tolocalestring to use commas */}
@@ -56,5 +92,3 @@ export default function CountryDetail({ countriesData }) {
     </section>
   );
 }
-
-
