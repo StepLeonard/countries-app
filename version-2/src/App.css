@@ -170,12 +170,6 @@ body {
   padding: 0.8rem;
 }
 
-/* Hover effect */
-.button:hover {
-  background-color: #6a66c5;
-}
-/* Country Detail Page  */
-
 .backbtn {
   display: inline-block;
   margin-bottom: 2rem;
@@ -214,4 +208,16 @@ a {
 .welcome {
   text-align: center;
   font-size: 40px;
+}
+/* This styles ALL buttons in the app */
+button {
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  background-color: green;
+  color: white;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  font-size: 1.1rem;
+  cursor: pointer;
 }
