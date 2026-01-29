@@ -9,7 +9,7 @@ export default function CountryDetail({ countriesData }) {
   const navigate = useNavigate();
 
   // store how many times this country was viewed
-  // start at 0 so we don’t show null on the screen
+  // start at 0
   const [viewCount, setViewCount] = useState(0);
 
   console.log(countryName);
@@ -19,7 +19,7 @@ export default function CountryDetail({ countriesData }) {
     (item) => item.name.common === countryName,
   );
 
-  // This function updates the country view count in the backend
+  // This function updates the country view count
   async function updateCountryViewCount(countryName) {
     try {
       const response = await fetch(
@@ -124,8 +124,7 @@ export default function CountryDetail({ countriesData }) {
 
           <p>
             {/* find population and use tolocalestring to use commas */}
-            <strong>Population:</strong>{" "}
-            {country.population.toLocaleString()}
+            <strong>Population:</strong> {country.population.toLocaleString()}
           </p>
 
           <p>
