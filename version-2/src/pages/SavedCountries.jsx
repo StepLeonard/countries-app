@@ -143,7 +143,7 @@ function SavedCountries() {
       </div>
 
       {/* Show newest user from API */}
-      <div class="welcome">
+      <div className="welcome">
         {newestUser && <p>Welcome {newestUser.name}</p>}
       </div>
 
