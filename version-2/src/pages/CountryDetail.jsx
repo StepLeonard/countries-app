@@ -8,6 +8,10 @@ export default function CountryDetail({ countriesData }) {
   // allows us to go back to the previous page
   const navigate = useNavigate();
 
+  // store how many times this country was viewed
+  // start at 0 so we don’t show null on the screen
+  const [viewCount, setViewCount] = useState(0);
+
   console.log(countryName);
 
   // find the country that matches the name from the URL
@@ -15,7 +19,45 @@ export default function CountryDetail({ countriesData }) {
     (item) => item.name.common === countryName,
   );
 
-  // ✅ This function saves ONE country to the backend
+  // This function updates the country view count in the backend
+  async function updateCountryViewCount(countryName) {
+    try {
+      const response = await fetch(
+        "https://backend-answer-keys.onrender.com/update-one-country-count",
+        {
+          // We are SENDING data, so we use POST
+          method: "POST",
+
+          // Tell the backend we are sending JSON data
+          headers: {
+            "Content-Type": "application/json",
+          },
+
+          // Send the country name in an object
+          body: JSON.stringify({
+            country_name: countryName,
+          }),
+        },
+      );
+
+      // The backend sends back the updated view count
+      const data = await response.json();
+
+      // Save the new count so we can show it on the page
+      setViewCount(data.count);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  // This runs once when the page loads
+  useEffect(() => {
+    if (countryName) {
+      updateCountryViewCount(countryName);
+    }
+  }, [countryName]);
+
+  // This function saves ONE country to the backend
   async function saveCountry(countryName) {
     try {
       const response = await fetch(
@@ -67,6 +109,11 @@ export default function CountryDetail({ countriesData }) {
         <div className="detailtext">
           <h1>{country.name.common}</h1>
 
+          {/* Show how many times this country was viewed */}
+          <p>
+            <strong>Views:</strong> {viewCount}
+          </p>
+
           {/* Save button */}
           <button
             className="savebtn"
@@ -77,7 +124,8 @@ export default function CountryDetail({ countriesData }) {
 
           <p>
             {/* find population and use tolocalestring to use commas */}
-            <strong>Population:</strong> {country.population.toLocaleString()}
+            <strong>Population:</strong>{" "}
+            {country.population.toLocaleString()}
           </p>
 
           <p>

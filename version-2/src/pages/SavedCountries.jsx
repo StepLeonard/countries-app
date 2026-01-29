@@ -135,7 +135,7 @@ function SavedCountries() {
       {/* Page title */}
       <h1>My Saved Countries</h1>
 
-      {/* Show saved countries using SAME grid as Home */}
+      {/* Show saved countries using SAME grid as Home  */}
       <div className="grid">
         {userSavedCountries.map((country) => (
           <CountryCard key={country.name.common} country={country} />
