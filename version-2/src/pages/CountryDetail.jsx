@@ -114,10 +114,10 @@ export default function CountryDetail({ countriesData }) {
             <strong>Views:</strong> {viewCount}
           </p>
 
-          {/* Save button */}
+          {/* Save button  when clicked save the country*/}
           <button
             className="savebtn"
-            onClick={() => saveCountry(country.name.common)} // when clicked, save this country
+            onClick={() => saveCountry(country.name.common)} 
           >
             Save
           </button>
