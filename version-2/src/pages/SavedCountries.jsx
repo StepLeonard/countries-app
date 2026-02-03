@@ -87,7 +87,7 @@ function SavedCountries() {
     }
   }
 
-  // get all saved countries
+  // get all saved countries.
   async function getSavedCountries() {
     try {
       const response = await fetch(
