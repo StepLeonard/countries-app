@@ -60,23 +60,20 @@ export default function CountryDetail({ countriesData }) {
   // This function saves ONE country to the backend
   async function saveCountry(countryName) {
     try {
-      const response = await fetch(
-        "https://backend-answer-keys.onrender.com/save-one-country",
-        {
-          // We are SENDING data, so we use POST
-          method: "POST",
+      const response = await fetch("https://backend-answer-keys.onrender.com/save-one-country", {
+        // We are SENDING data, so we use POST
+        method: "POST",
 
-          // Tell the backend we are sending JSON data
-          headers: {
-            "Content-Type": "application/json",
-          },
-
-          // Send the country name in an object
-          body: JSON.stringify({
-            country_name: countryName,
-          }),
+        // Tell the backend we are sending JSON data
+        headers: {
+          "Content-Type": "application/json",
         },
-      );
+
+        // Send the country name in an object
+        body: JSON.stringify({
+          country_name: countryName,
+        }),
+      });
 
       // The backend sends back a confirmation message (text)
       const result = await response.text();
