@@ -23,7 +23,7 @@ export default function CountryDetail({ countriesData }) {
   async function updateCountryViewCount(countryName) {
     try {
       const response = await fetch(
-        "https://backend-answer-keys.onrender.com/update-one-country-count",
+        "/api/update-one-country-count",
         {
           // We are SENDING data, so we use POST
           method: "POST",
@@ -60,7 +60,7 @@ export default function CountryDetail({ countriesData }) {
   // This function saves ONE country to the backend
   async function saveCountry(countryName) {
     try {
-      const response = await fetch("https://backend-answer-keys.onrender.com/save-one-country", {
+      const response = await fetch("/api/save-one-country", {
         // We are SENDING data, so we use POST
         method: "POST",
 

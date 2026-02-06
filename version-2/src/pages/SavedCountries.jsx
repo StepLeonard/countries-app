@@ -14,7 +14,7 @@ function SavedCountries() {
   async function storeUserData(data) {
     try {
       const response = await fetch(
-        "https://backend-answer-keys.onrender.com/add-one-user",
+        "/api/add-one-user",
         {
           // HTTP request
           method: "POST",
@@ -72,7 +72,7 @@ function SavedCountries() {
   async function getNewestUserData() {
     try {
       const response = await fetch(
-        "https://backend-answer-keys.onrender.com/get-newest-user",
+        "/api/get-newest-user",
         {
           method: "GET",
         },
