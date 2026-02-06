@@ -91,7 +91,7 @@ function SavedCountries() {
   async function getSavedCountries() {
     try {
       const response = await fetch(
-        "https://backend-answer-keys.onrender.com/get-all-saved-countries",
+        "/api/get-all-saved-countries",
         {
           method: "GET",
         },
