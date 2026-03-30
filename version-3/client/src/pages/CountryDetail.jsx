@@ -22,23 +22,20 @@ export default function CountryDetail({ countriesData }) {
   // This function updates the country view count
   async function updateCountryViewCount(countryName) {
     try {
-      const response = await fetch(
-        "/api/update-one-country-count",
-        {
-          // We are SENDING data, so we use POST
-          method: "POST",
+      const response = await fetch("/api/update-one-country-count", {
+        // We are SENDING data, so we use POST
+        method: "POST",
 
-          // Tell the backend we are sending JSON data
-          headers: {
-            "Content-Type": "application/json",
-          },
-
-          // Send the country name in an object
-          body: JSON.stringify({
-            country_name: countryName,
-          }),
+        // Tell the backend we are sending JSON data
+        headers: {
+          "Content-Type": "application/json",
         },
-      );
+
+        // Send the country name in an object
+        body: JSON.stringify({
+          country_name: countryName,
+        }),
+      });
 
       // The backend sends back the updated view count
       const data = await response.json();
@@ -83,6 +80,11 @@ export default function CountryDetail({ countriesData }) {
     } catch (error) {
       console.log(error);
     }
+  }
+
+  // if country is not ready yet, show loading
+  if (!country) {
+    return <p>Loading...</p>;
   }
 
   return (
