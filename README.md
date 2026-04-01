@@ -6,7 +6,7 @@ This project is a full-stack Countries App that lets users browse different coun
 
 ## 🚀 Live Site
 
-Here's the link to view the live app: ___________
+Here's the link to view the live app: https://version-4-countries.netlify.app/
 
 ## 🖼️ Screenshots
 
