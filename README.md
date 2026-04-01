@@ -10,6 +10,7 @@ Here's the link to view the live app: https://version-4-countries.netlify.app/
 
 ## 🖼️ Screenshots
 
+<img width="1319" height="697" alt="Screenshot 2026-04-01 at 1 21 28 PM" src="https://github.com/user-attachments/assets/636039d6-d901-4502-88d1-0907eafb53d9" />
 
 
 ## ✨ Features
