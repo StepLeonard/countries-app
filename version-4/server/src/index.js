@@ -4,7 +4,7 @@ import config from "./config.js";
 
 // connect to the database
 const db = new pg.Pool({
-  connectionString: config.databaseUrl + "&uselibpqcompat=true",
+  connectionString: process.env.DATABASE_URL,
   ssl: true,
 });
 
